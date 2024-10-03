@@ -43,6 +43,9 @@ retrieve_asm(row, asm_target='angha_clang_ir_Oz')
 
 The C functions to be compiled for the Synth benchmark can be found on Github: https://github.com/mob-group/synthesis-eval/tree/master/examples
 
+## Model
+
+See example in `interactive.py`.
 
 ## Paper
 
