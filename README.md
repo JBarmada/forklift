@@ -10,7 +10,7 @@ Available on the HF hub: https://huggingface.co/datasets/jordiae/exebench/tree/c
 Note that it's the branch/revision `clang`, not `main`. The dataloader supports streaming:
 
 ```
-# pip install datasets==2.15 standard
+# pip install datasets==2.15 zstandard
 # A known issue is that the data loader requires datasets 2.15.
 splits = ['train_synth_compilable', 'valid_synth', 'test_synth']
 stream = True 
