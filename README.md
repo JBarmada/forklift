@@ -47,6 +47,8 @@ The C functions to be compiled for the Synth benchmark can be found on Github: h
 
 See example in `interactive.py`.
 
+Note that this code is a stripped down version to demo the model. Preprocessing and training code are not provided in this release.
+
 ## Paper
 
 https://openreview.net/forum?id=LWfDcI6txJ#discussion
