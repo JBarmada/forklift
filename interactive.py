@@ -4,16 +4,26 @@ from forklift.asm import AsmAdder, FuncDataclass
 from forklift.utils import normalize_structs, InferenceDataset
 
 # This function will be compiled and we will try to recover it. Note that despite its apparent user-level simplicity,after vectorization its assembly becomes quite convoluted.
+# Your new C code that checks for proximity in an array.
 SAMPLE = dict(func_def='''
-void f(int *list, int val, int n) {
-    int i;
-    for (i = 0; i < n; ++i) {
-        list[i] += val;
+int func0(float numbers[], int size, float threshold) {
+    int i, j;
+    for (i = 0; i < size; i++) {
+        for (j = i + 1; j < size; j++) {
+            if (fabs(numbers[i] - numbers[j]) < threshold) {
+                return 1;
+            }
+        }
     }
+    return 10;
 }
 ''',
-              deps='',
-              fname='f',
+              deps='''
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+''',
+              fname='func0',
               )
 
 DIRECTION = 'clang_opt3_ir_optz-ir_optz'
@@ -36,7 +46,7 @@ def run(sample, batch_size=1):
     samples = [sample]
     for row in InferenceDataset(samples, compilers_keys=['clang_ir_Oz', 'clang_x86_O3']):
         batch.append((row, pair))
-        fnames.append('f')
+        fnames.append('func0')
         rows.append(row)
         if len(batch) == batch_size:
             predictions.extend(evaluator.predict_batch(batch))

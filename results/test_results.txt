@@ -1,0 +1,12 @@
+Test Results Summary
+==================================================
+Total: 1, Passed: 0, Failed: 1
+Success rate: 0.0%
+
+Problem 7: FAILED
+  Error: Compilation failed: results/problem7_generated.ll:23:1: error: instruction forward referenced with type 'label'
+%17 = add nsw i64 %16, 4
+^
+1 error generated.
+
+

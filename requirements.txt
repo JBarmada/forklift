@@ -1,7 +1,8 @@
 sentencepiece
-datasets==2.15
+datasets 
+#==2.15
 tokenizers
-torch==1.12.1
+#torch==1.12.1
 zstandard
 pygments
 dirtyjson
